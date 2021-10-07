@@ -21,7 +21,16 @@ namespace Seminar.Services
 
              return listaCurs;*/
 
-            return await PreiaCursXML();
+            DaoCurs dao = new DaoCurs();
+
+            List<Curs> listaCurs = dao.ObtineCursDinData(Curs.ObtineDataReferinta(DateTime.Now).ToString("yyyy-MM-dd"));
+            if (listaCurs.Count == 0)
+            {
+                listaCurs = await PreiaCursXML();
+                dao.AdaugaListaCurs(listaCurs);
+            }
+
+            return listaCurs;
         }
 
         private static async Task<List<Curs>> PreiaCursXML()

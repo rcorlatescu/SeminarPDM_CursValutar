@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Seminar.Services;
+using SQLite;
 namespace Seminar.Models
 {
     class Curs
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string Valuta { get; set; }
         public double Valoare { get; set; }
         public int Multiplicator { get; set; }
@@ -20,6 +23,7 @@ namespace Seminar.Models
         //RON -> ro.png
         //EUR -> eu.png
 
+        [Ignore]
         public string Drapel
         {
             get
@@ -31,6 +35,22 @@ namespace Seminar.Models
         public override string ToString()
         {
             return Valuta;
+        }
+
+        public static DateTime ObtineDataReferinta(DateTime data)
+        {
+            switch (data.DayOfWeek)
+            {
+                case DayOfWeek.Saturday:
+                    return data.AddDays(-1);
+                case DayOfWeek.Sunday:
+                    return data.AddDays(-2);
+                case DayOfWeek.Monday:
+                    if (data.Hour < 13)
+                        return data.AddDays(-3);
+                    break;
+            }
+            return data.ToUniversalTime().Hour< 10 ? data.AddDays(-1) : data;
         }
     }
 }
