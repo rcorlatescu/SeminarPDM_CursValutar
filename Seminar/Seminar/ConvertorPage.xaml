@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Seminar.ConvertorPage"
+             Title="Convertor">
+    <ContentPage.Content>
+        <Grid Padding="8,8,8,8">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Converteste din " />
+            <Entry x:Name="entrySuma" Keyboard="Numeric" Grid.Row="1" Grid.Column="0" Placeholder="Suma de convertit"/>
+            <Picker x:Name="pickerValutaSursa" Grid.Row="1" Grid.Column="1" Title="Alege valuta"/>
+            <Label Grid.Row="2" Grid.Column="0" Text="in"/>
+            <Label  x:Name="labelRezultat" Text="0" Grid.Row="3" Grid.Column="0"/>
+            <!--aici va fi rezultatul conversiei-->
+            <Picker  x:Name="pickerValutaDest" Grid.Row="3" Grid.Column="1" Title="Alege valuta"/>
+            <Button  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="Converteste" HeightRequest="80" Clicked="ConvertesteButton_Clicked"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

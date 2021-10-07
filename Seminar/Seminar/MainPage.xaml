@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Seminar.MainPage"
+             Title="Curs valutar">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Setari" Order="Secondary" Clicked="Setari_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <StackLayout>
+
+        <Label Text="Data cursului" FontSize="Title" Padding="16"/>
+
+        <ListView x:Name="listViewCurs">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <!--1 
+                        EUR = -> ptr EUR avem {0} 0 fiind pozitia pentru a referi elemnetul respectiv
+                        4.43 RON-->
+                        <StackLayout Orientation="Horizontal" Padding="8">
+                            <Image Source="{Binding Drapel}"/>
+                            <Label Text="{Binding Multiplicator}" VerticalOptions="Center"/>
+                            <Label Text="{Binding Valuta, StringFormat='{0} = '}" VerticalOptions="Center"/>
+                            <Label Text="{Binding Valoare, StringFormat='{0} RON '}" VerticalOptions="Center"/>
+                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
+</ContentPage>
